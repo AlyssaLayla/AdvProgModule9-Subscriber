@@ -17,3 +17,10 @@ Simulation slow subscriber
 ![slow subscriber rabbit](images/rabbit1.png)
 ![slow subscriber console](images/console1.png)
 Pada simulasi slow subscriber ini, saya meng-uncomment `thread::sleep(ten_millis);`. Kemudian saya melakukan `cargo build` dan `cargo run` sebanyak 4 kali dengan 1 console terminal. Setiap masing - masing cargo run mengirim 5 pesan. Hanya 3 yang terlihat di queue, karena yang pertama sudah diproses langsung. 3 cargo run x 5 pesan = 15 queue. Sehingga terlihat bahwa queue di mesin saya adalah 15. 
+
+Reflection and Running at least three subscribers
+![slow subscriber rabbit 2](images/rabbit2.png)
+![slow subscriber console 2a](images/console2a.png)
+![slow subscriber console 2b](images/console2b.png)
+![slow subscriber console 2c](images/console2c.png)
+Untuk kasus me-run 3 subscriber, terdapat queue yang lebih sedikit, yaitu sesuai grafik adalah 7,5. Hal ini dikarenakan terjadi load balance dari semua subscriber oleh pesan yang dikirim publisher. Untuk improve bisa dengan memperbaiki act handling menjadi lebih spesifik
